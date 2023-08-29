@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "ed6ee1da-3c83-4dae-9b26-725630552649",
+		"name": "Learn_JWT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20647851"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"cuongdn\",\n    \"password\": \"12042001dnc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"cuongdn\",\n    \"password\": \"12042001dnc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "date",
+							"value": "Tue, 29 Aug 2023 16:35:11 GMT"
+						},
+						{
+							"key": "Vary",
+							"value": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url, Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Login successfull!\",\n    \"token\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6eyJ1c2VybmFtZSI6ImN1b25nZG4iLCJwYXNzd29yZCI6IjEyMDQyMDAxZG5jIn0sImlhdCI6MTY5MzMyNjkxMSwiZXhwIjoxNjkzMzI2OTcxfQ.SSgHzAvj4-lTwqm12HqN69bIJA4sIFBnVNCfMKY6frw\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6eyJ1c2VybmFtZSI6ImN1b25nZG4iLCJwYXNzd29yZCI6IjEyMDQyMDAxZG5jIn0sImlhdCI6MTY5MzMyNjkxMSwiZXhwIjoxNjkzMzMwNTExfQ.mDfyZHKjgjSHca6KGTZ3FuT8EvGGOyKelj0bR2ZClGs\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "access-default",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "BEARER token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/auth/default",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"default"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "access-default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "BEARER token",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/auth/default",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"default"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "date",
+							"value": "Tue, 29 Aug 2023 16:32:50 GMT"
+						},
+						{
+							"key": "Vary",
+							"value": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url, Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"access free by default api\"\n}"
+				}
+			]
+		},
+		{
+			"name": "access-protected",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6eyJ1c2VybmFtZSI6ImN1b25nZG4iLCJwYXNzd29yZCI6IjEyMDQyMDAxZG5jIn0sImlhdCI6MTY5MzMyNjkxMSwiZXhwIjoxNjkzMzI2OTcxfQ.SSgHzAvj4-lTwqm12HqN69bIJA4sIFBnVNCfMKY6frw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/auth/protected",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"protected"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "date",
+							"value": "Tue, 29 Aug 2023 16:35:39 GMT"
+						},
+						{
+							"key": "Vary",
+							"value": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url, Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"access with authentication into protected api\"\n}"
+				}
+			]
+		},
+		{
+			"name": "refresh-token",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "refresh-token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6eyJ1c2VybmFtZSI6ImN1b25nZG4iLCJwYXNzd29yZCI6IjEyMDQyMDAxZG5jIn0sImlhdCI6MTY5MzMyNjkxMSwiZXhwIjoxNjkzMzMwNTExfQ.mDfyZHKjgjSHca6KGTZ3FuT8EvGGOyKelj0bR2ZClGs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/auth/refresh-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "content-type",
+							"value": "application/json"
+						},
+						{
+							"key": "date",
+							"value": "Tue, 29 Aug 2023 16:49:04 GMT"
+						},
+						{
+							"key": "Vary",
+							"value": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url, Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Login successfull!\",\n    \"token\": {\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6eyJ1c2VybmFtZSI6ImN1b25nZG4iLCJwYXNzd29yZCI6IjEyMDQyMDAxZG5jIn0sImlhdCI6MTY5MzMyNzc0NCwiZXhwIjoxNjkzMzI3ODA0fQ.ZycXzSF5uiL5o91FTtJb7AyC9MFN7lteZajHZXNaFzA\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6eyJ1c2VybmFtZSI6ImN1b25nZG4iLCJwYXNzd29yZCI6IjEyMDQyMDAxZG5jIn0sImlhdCI6MTY5MzMyNzc0NCwiZXhwIjoxNjkzMzMxMzQ0fQ.RvQVjfqevA5BIZABOjzWbOum04cdu4axhQ_3zGn7Ns0\"\n    }\n}"
+				}
+			]
+		}
+	]
+}
