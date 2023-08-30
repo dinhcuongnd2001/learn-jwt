@@ -1,12 +1,10 @@
 "use client";
+import { TypeLogin } from "@/interfaces";
+import { handleLogin } from "@/services";
 import { useState } from "react";
 
-interface InfoType {
-  username: string;
-  password: string;
-}
 const Login = () => {
-  const [info, setInfo] = useState<InfoType>({ username: "", password: "" });
+  const [info, setInfo] = useState<TypeLogin>({ username: "", password: "" });
 
   const handleUpdateInfo = ({
     field,
@@ -16,6 +14,12 @@ const Login = () => {
     value: string;
   }) => {
     setInfo({ ...info, [field]: value });
+  };
+
+  const handleSubmit = async () => {
+    const check = await handleLogin({ ...info });
+    if (check) alert("login successfull, you can test token now");
+    else alert("Login error");
   };
 
   return (
@@ -58,7 +62,7 @@ const Login = () => {
         />
       </div>
       <button
-        onClick={() => {}}
+        onClick={handleSubmit}
         className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       >
         Submit

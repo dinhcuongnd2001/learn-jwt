@@ -1,19 +1,23 @@
 import axios from "axios";
 
-const axiosPublish = axios.create({
+const axiosPublic = axios.create({
   baseURL: "/api",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-axiosPublish.interceptors.response.use(
+axiosPublic.interceptors.response.use(
   (response) => {
+    console.log("res ::", response);
     return response.data;
   },
   (err) => {
+    console.log("error", err);
+    console.log("error", typeof err);
+
     return Promise.reject(err);
   }
 );
 
-export { axiosPublish };
+export { axiosPublic };

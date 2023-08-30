@@ -1,3 +1,4 @@
+import { TypeLogin } from "@/interfaces";
 import { genTokenPair } from "@/libs";
 import {
   NextResponse,
@@ -5,13 +6,10 @@ import {
   type NextRequest,
 } from "next/server";
 
-interface BodyRequest {
-  username: string;
-  password: string;
-}
-
 export async function POST(request: Request) {
-  const { username } = (await request.json()) as BodyRequest;
+  console.log("called");
+  const { username, password } = (await request.json()) as TypeLogin;
+  console.log("🚀 ~ file: route.ts:12 ~ POST ~ username:", username);
   const token = genTokenPair({ username });
   return NextResponse.json({ message: "Login successfull!", token });
 }

@@ -1,6 +1,6 @@
 import mem from "mem";
 
-import { axiosPublish } from "@/configs/axios/axios.publish";
+import { axiosPublic } from "@/configs/axios/axios.public";
 import { TypeGenTokenPair } from "@/interfaces";
 const maxAge = parseInt(process.env.NEXT_PUBLIC_MAX_AGE || "10000");
 
@@ -11,7 +11,7 @@ export const refreshTokenFn = mem(
       String(localStorage.getItem("refreshToken"))
     );
     try {
-      const newToken = await axiosPublish.post<never, TypeGenTokenPair>(
+      const newToken = await axiosPublic.post<never, TypeGenTokenPair>(
         "/refresh-token",
         undefined,
         {
