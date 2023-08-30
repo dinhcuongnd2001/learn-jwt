@@ -9,7 +9,6 @@ const axiosPublic = axios.create({
 
 axiosPublic.interceptors.response.use(
   (response) => {
-    console.log("res ::", response);
     return response.data;
   },
   (err) => {

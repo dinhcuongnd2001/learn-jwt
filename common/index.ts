@@ -12,7 +12,7 @@ export const refreshTokenFn = mem(
     );
     try {
       const newToken = await axiosPublic.post<never, TypeGenTokenPair>(
-        "/refresh-token",
+        "/auth/refresh-token",
         undefined,
         {
           headers: {
