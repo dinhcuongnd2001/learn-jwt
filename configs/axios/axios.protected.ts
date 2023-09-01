@@ -59,7 +59,8 @@ axiosProtected.interceptors.response.use(
           Authorization: `Bearer ${accessToken}`,
         } as AxiosRequestHeaders;
       }
-      return axios(config);
+      // Gửi lại request lỗi
+      return await axiosProtected(config);
     }
     return Promise.reject(err);
   }

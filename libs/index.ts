@@ -10,9 +10,11 @@ export const genTokenPair = ({
 }): TypeGenTokenPair => {
   const accessToken = jwt.sign({ username }, secret, {
     expiresIn: 60,
+    // 60 -> 1 phút
   });
   const refreshToken = jwt.sign({ username }, secret, {
     expiresIn: 60 * 60,
+    // -> 1h
   });
 
   return { accessToken, refreshToken };

@@ -4,6 +4,11 @@ import { axiosPublic } from "@/configs/axios/axios.public";
 import { TypeGenTokenPair } from "@/interfaces";
 const maxAge = parseInt(process.env.NEXT_PUBLIC_MAX_AGE || "10000");
 
+interface TypeResponse {
+  message: string;
+  data: TypeGenTokenPair;
+}
+
 export const refreshTokenFn = mem(
   async (): Promise<TypeGenTokenPair> => {
     // b1 get refreshtoken from localStorage
@@ -11,7 +16,9 @@ export const refreshTokenFn = mem(
       String(localStorage.getItem("refreshToken"))
     );
     try {
-      const newToken = await axiosPublic.post<never, TypeGenTokenPair>(
+      const {
+        data: { accessToken, refreshToken: newRefreshToken },
+      } = await axiosPublic.post<never, TypeResponse>(
         "/auth/refresh-token",
         undefined,
         {
@@ -20,17 +27,13 @@ export const refreshTokenFn = mem(
           },
         }
       );
-      console.log("new Token ::", newToken);
-      if (!newToken) {
+      if (!accessToken || !newRefreshToken) {
         localStorage.removeItem("refreshToken");
         localStorage.removeItem("accessToken");
       }
-      localStorage.setItem("accessToken", JSON.stringify(newToken.accessToken));
-      localStorage.setItem(
-        "refreshToken",
-        JSON.stringify(newToken.refreshToken)
-      );
-      return newToken;
+      localStorage.setItem("accessToken", JSON.stringify(accessToken));
+      localStorage.setItem("refreshToken", JSON.stringify(newRefreshToken));
+      return { accessToken, refreshToken: newRefreshToken };
     } catch (error) {
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("accessToken");
