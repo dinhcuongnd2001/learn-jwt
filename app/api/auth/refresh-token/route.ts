@@ -16,5 +16,8 @@ export async function POST(request: Request) {
     });
   }
   const token = genTokenPair({ username });
-  return NextResponse.json({ message: "Refresh token successfull!", token });
+  return NextResponse.json({
+    message: "Refresh token successfull!",
+    data: token,
+  });
 }
